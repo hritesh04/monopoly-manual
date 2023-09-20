@@ -1,3 +1,5 @@
+const dotenv = require("dotenv");
+dotenv.config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -6,9 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-mongoose
-  .connect("mongodb+srv://acerowl:mv7QbClG6XPacUML@notes0.nd610wc.mongodb.net/")
-  .then(() => console.log("DB Connected"));
+mongoose.connect(process.env.DB_LINK).then(() => console.log("DB Connected"));
 
 let player = 0;
 
